@@ -9,6 +9,5 @@ use Illuminate\Support\Facades\Config;
 Route::group([
     'middleware' => [VerifySlackToken::class],
 ], function () {
-    $config = Config::get('laravel-slack-plugin');
-    Route::post($config['endpoint-url'], 'Pdffiller\LaravelSlack\HandleRequestController@handle');
+    Route::post("/api/v1/webhook/slack", 'Pdffiller\LaravelSlack\HandleRequestController@handle');
 });

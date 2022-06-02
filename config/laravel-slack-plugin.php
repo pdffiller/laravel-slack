@@ -16,9 +16,4 @@ return [
      */
     'handlers' => [
     ],
-
-    /*
-     * Endpoint URL
-     */
-    'endpoint-url' => 'slack/handle'
 ];
