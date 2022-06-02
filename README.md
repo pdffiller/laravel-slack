@@ -9,7 +9,7 @@ This package is used for sending Slack messages and handling interactions with s
 Install the package via composer:
 
 ``` bash
-composer require pdffiller/laravel-slack
+composer require meilleursbiens/laravel-slack
 ```
 
 Install service provider:
