@@ -1,8 +1,12 @@
 {
-    "name": "pdffiller/laravel-slack",
-    "description": "Slack plugin",
+    "name": "meilleursbiens/laravel-slack",
+    "description": "Slack interactive message handler for Laravel",
     "license": "MIT",
     "authors": [
+         {
+            "name": "MeilleursBiens",
+            "email": "clement@meilleursbiens.com"
+        },
         {
             "name": "Lysenko Vladyslav",
             "email": "lysenko.vladyslav@pdffiller.team"
