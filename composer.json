@@ -1,30 +1,30 @@
 {
-    "name": "pdffiller/laravel-slack",
-    "description": "Slack plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Lysenko Vladyslav",
-            "email": "lysenko.vladyslav@pdffiller.team"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "fideloper/proxy": "^4.0",
-        "guzzlehttp/guzzle": "^6.3|^7.0",
-        "illuminate/contracts": "^5.7|6.*|~7.0|~8.0",
-        "illuminate/support": "^5.7|6.*|~7.0|~8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Pdffiller\\LaravelSlack\\": "src"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Pdffiller\\LaravelSlack\\LaravelSlackServiceProvider"
-            ]
-        }
+  "name": "pdffiller/laravel-slack",
+  "description": "Slack plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "korniienko leonid",
+      "email": "leov@pdffiller.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "fideloper/proxy": "^4.0",
+    "guzzlehttp/guzzle": "^6.3|^7.0",
+    "illuminate/contracts": "^5.7|6.*|~7.0|~8.0|~9.0",
+    "illuminate/support": "^5.7|6.*|~7.0|~8.0|~9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pdffiller\\LaravelSlack\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Pdffiller\\LaravelSlack\\LaravelSlackServiceProvider"
+      ]
+    }
+  }
 }
