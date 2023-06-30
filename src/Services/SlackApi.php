@@ -55,7 +55,7 @@ class SlackApi
             $headers['Authorization'] = "Bearer {$botToken}";
         }
 
-        $response = $this->client->request('POST', $url, [
+        $response = $this->client->request($method->getMethod(), $url, [
             'headers' => $headers,
             $bodyType => $body,
         ]);
@@ -84,12 +84,28 @@ class SlackApi
         return $decodedResponse;
     }
 
+    public function request(AbstractMethodInfo $method, array $body, Model $model = null, $options = null): array
+    {
+        return $this->post($method, $body, $model, $options);
+    }
+
+    public function downloadFile(array $fileInfo): string
+    {
+        $botToken = $this->config->get('bot-token');
+
+        $response = $this->client->request('GET', $fileInfo['file']['url_private_download'], [
+            'headers' => ['Authorization' => "Bearer {$botToken}"]
+        ]);
+
+        return $response->getBody()->getContents();
+    }
+
     /**
      * @param array $response
      * @param \Illuminate\Database\Eloquent\Model|null $model
      * @param null $options
      */
-    private function saveMessage(array $response, Model $model = null, $options = null)
+    private function saveMessage(array $response, Model $model = null, $options = null): void
     {
         $dbRecord = new LaravelSlackMessage();
         $dbRecord->ts = $response['ts'];
