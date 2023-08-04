@@ -15,28 +15,28 @@ class FileItemObject extends BaseRequestBody
     /**
      * @var string
      */
-    private $fileName;
+    private ?string $fileName;
 
     /**
      * @var string
      */
-    private $filePath;
+    private ?string $filePath;
 
     /**
      * @var string
      */
-    private $fileType;
+    private ?string $fileType;
 
     /**
      * @var string
      */
-    private $initialComment;
+    private ?string $initialComment;
 
     /**
      * @var string
      */
-    private $channels;
-
+    private ?string $channels;
+    private ?string $threadTs;
     /**
      * @param string $fileName
      *
@@ -98,6 +98,18 @@ class FileItemObject extends BaseRequestBody
     }
 
     /**
+     * @param string $threadTs
+     *
+     * @return FileItemObject
+     */
+    public function setThreadTs(string $threadTs): self
+    {
+        $this->threadTs = $threadTs;
+
+        return $this;
+    }
+
+    /**
      *
      * @return array
      */
@@ -111,6 +123,10 @@ class FileItemObject extends BaseRequestBody
             [
                 'name'     => 'filename',
                 'contents' => $this->fileName,
+            ],
+            [
+                'name'     => 'thread_ts',
+                'contents' => $this->threadTs,
             ],
             [
                 'name'     => 'file',
