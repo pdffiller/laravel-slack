@@ -6,7 +6,9 @@ use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Config\Repository;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
 use Pdffiller\LaravelSlack\AvailableMethods\AbstractMethodInfo;
+use Pdffiller\LaravelSlack\AvailableMethods\FilesInfo;
 use Pdffiller\LaravelSlack\AvailableMethods\FilesUpload;
 use Pdffiller\LaravelSlack\RequestBody\BaseRequestBody;
 use Pdffiller\LaravelSlack\RequestBody\Json\JsonBodyObject;
@@ -108,5 +110,27 @@ class LaravelSlackPlugin
         $this->message = new FileItemObject();
 
         return $this->message;
+    }
+
+    public function getFileInfo(string $fileId)
+    {
+        $method = new FilesInfo();
+
+        return $this->slackApi->request($method, ['file' => $fileId]);
+    }
+
+    public function downloadFile(array $fileInfo)
+    {
+        $validator = Validator::make(
+            ['url' => Arr::get($fileInfo, 'file.url_private_download')],
+            ['url' => 'regex:/^https:\/\/files\.slack\.com\/.*$/']
+        );
+
+        if ($validator->fails()) {
+            throw new \Exception('File not found');
+        }
+
+        return $this->slackApi->downloadFile($fileInfo);
+
     }
 }

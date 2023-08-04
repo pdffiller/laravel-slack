@@ -5,15 +5,15 @@
   "authors": [
     {
       "name": "korniienko leonid",
-      "email": "leov@pdffiller.com"
+      "email": "leo@pdffiller.com"
     }
   ],
   "minimum-stability": "dev",
   "require": {
     "fideloper/proxy": "^4.0",
     "guzzlehttp/guzzle": "^6.3|^7.0",
-    "illuminate/contracts": "^5.7|6.*|~7.0|~8.0|~9.0",
-    "illuminate/support": "^5.7|6.*|~7.0|~8.0|~9.0"
+    "illuminate/contracts": "~7.0|~8.0|~9.0",
+    "illuminate/support": "~7.0|~8.0|~9.0"
   },
   "autoload": {
     "psr-4": {
