@@ -15,28 +15,28 @@ class FileItemObject extends BaseRequestBody
     /**
      * @var string
      */
-    private ?string $fileName;
+    private ?string $fileName = null;
 
     /**
      * @var string
      */
-    private ?string $filePath;
+    private ?string $filePath = null;
 
     /**
      * @var string
      */
-    private ?string $fileType;
+    private ?string $fileType = null;
 
     /**
      * @var string
      */
-    private ?string $initialComment;
+    private ?string $initialComment = null;
 
     /**
      * @var string
      */
-    private ?string $channels;
-    private ?string $threadTs;
+    private ?string $channels = null;
+    private ?string $threadTs = null;
     /**
      * @param string $fileName
      *
