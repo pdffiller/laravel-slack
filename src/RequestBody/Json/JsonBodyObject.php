@@ -63,6 +63,8 @@ class JsonBodyObject extends BaseRequestBody implements Arrayable
      */
     private $dialog;
 
+    private $user;
+
     /**
      * JsonBody constructor.
      */
@@ -179,6 +181,13 @@ class JsonBodyObject extends BaseRequestBody implements Arrayable
         return $this;
     }
 
+    public function setUser(string $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     /**
      * @param \Pdffiller\LaravelSlack\RequestBody\Json\Attachment $attachment
      *
@@ -232,17 +241,22 @@ class JsonBodyObject extends BaseRequestBody implements Arrayable
      */
     public function toArray(): array
     {
-        return [
+        $array = [
+            'attachments'      => $this->attachments->toArray(),
             'channel'          => $this->channel,
-            'trigger_id'       => $this->triggerId,
-            'username'         => $this->username,
+            'dialog'           => $this->dialog ? $this->dialog->toArray() : null,
             'icon_url'         => $this->iconUrl,
-            'ts'               => $this->ts,
-            'thread_ts'        => $this->threadTs,
             'replace_original' => $this->replaceOriginal,
             'text'             => $this->text,
-            'dialog'           => $this->dialog ? $this->dialog->toArray() : null,
-            'attachments'      => $this->attachments->toArray(),
+            'thread_ts'        => $this->threadTs,
+            'trigger_id'       => $this->triggerId,
+            'username'         => $this->username,
+            'user'             => $this->user,
+            'ts'               => $this->ts,
         ];
+
+        return array_filter($array, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
     }
 }
