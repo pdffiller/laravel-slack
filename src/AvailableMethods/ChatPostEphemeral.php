@@ -3,7 +3,7 @@
 namespace Pdffiller\LaravelSlack\AvailableMethods;
 
 /**
- * Class ChatUpdate
+ * Class ChatPostEphemeral
  *
  * @package Pdffiller\LaravelSlack\AvailableMethods
  */
